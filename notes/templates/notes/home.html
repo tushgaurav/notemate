@@ -6,7 +6,7 @@ NoteMate - Home
 <div class="container">
     <div class="row">
         <div>
-            <h1>Welcome to NoteMate</h1>
+            <h1>Welcome to NoteMate, {{ request.user }}!</h1>
             <p>
                 This is a simple web application that allows you to create, edit, and delete notes.
             </p>
@@ -20,6 +20,16 @@ NoteMate - Home
                 You can delete a note by clicking the "Delete" button next to the note you want to delete.
             </p>
         </div>
+    </div>
+
+    <div class="notes">
+        {% for note in notes %}
+        <div class="note">
+            <h4>{{ note.title }}</h4>
+            <h5>{{ note.user }}</h5>
+            <p>{{ note.content }}</p>
+        </div>
+        {% endfor %}
     </div>
 
 {% endblock %}
