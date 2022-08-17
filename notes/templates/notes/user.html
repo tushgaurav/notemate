@@ -1,0 +1,14 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+{{ user.username }} - Notemate
+{% endblock %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <h2>@{{user.username}}</h2>
+</div>
+
+{% endblock %}
