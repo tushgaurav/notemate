@@ -18,6 +18,12 @@ body {
     color: var(--text);
 }
 
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 nav {
     background-color: var(--nav);
     padding: 0 1em;
@@ -26,6 +32,11 @@ nav {
     justify-content: space-between;
     align-items: baseline;
     flex-flow: row wrap;
+}
+
+li a {
+    color: var(--background);
+    text-decoration: none;
 }
 
 .logo {
