@@ -1,12 +1,15 @@
+import datetime
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from .models import Note
 from .forms import NoteForm
 
 def home(request):
+    time = datetime.datetime.now()
     notes = Note.objects.all()
     context = {
-        'notes': notes
+        'notes': notes,
+        'time': time
     }
     return render(request, 'notes/home.html', context)
 
@@ -21,7 +24,8 @@ def createNote(request):
     notes = Note.objects.all()
     form = NoteForm()
     context = {
-        'form': form
+        'form': form,
+        'notes': notes,
     }
 
     if request.method == 'POST':
@@ -32,3 +36,18 @@ def createNote(request):
             note.save()
             return redirect('home')
     return render(request, 'notes/add_note.html', context)
+
+def deleteNote(request, note_id):
+    note = Note.objects.get(id=note_id)
+
+    if request.user != note.user:
+        return HttpResponse("You don't have the persmission to delete this note.")
+    if request.method == "POST":
+        Note.delete(note)
+        return redirect('home')
+
+    context = {
+        'note': note,
+    }
+    return render(request, 'delete.html', context)
+
