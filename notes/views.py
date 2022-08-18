@@ -49,5 +49,19 @@ def deleteNote(request, note_id):
     context = {
         'note': note,
     }
-    return render(request, 'delete.html', context)
+    return render(request, 'notes/delete.html', context)
 
+def updateNote(request, note_id):
+    note = Note.objects.get(id=note_id)
+    form = NoteForm(instance=note)
+
+    if request.user != note.user:
+        return HttpResponse("You don't have permission to edit this note.")
+    if request.method == "POST":
+        form = NoteForm(request.POST, instance=note)       
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
+    context = {'form': form}
+    return render(request, 'notes/update_note.html', context)

@@ -11,3 +11,6 @@ class Note(models.Model):
     
     def __str__(self):
         return str(self.content)[0:60]
+
+    class Meta:
+        ordering = ['-date_updated', '-date_added'] 
