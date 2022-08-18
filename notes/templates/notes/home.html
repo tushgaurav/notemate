@@ -3,10 +3,12 @@
 NoteMate - Home
 {% endblock %}
 {% block content %}
+{% include 'navbar.html' %}
+{{ time }}
 <div class="container">
     <div class="row">
-        <div>
-            <h1>Welcome to NoteMate, {{ request.user }}!</h1>
+        <div class="hero-section">
+            <h1 class="greeting-text">Good Morning 😊, {{ request.user }}!</h1>
             <p>
                 This is a simple web application that allows you to create, edit, and delete notes.
             </p>

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --background: #EFE9F4;
+    --nav: #5863F8;
+    --text: #171D1C;
+    --accent: #D74E09;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+nav {
+    background-color: var(--nav);
+    padding: 0 1em;
+    color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-flow: row wrap;
+}
+
+li a {
+    color: var(--background);
+    text-decoration: none;
+}
+
+.logo {
+    color: var(--background);
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+nav ul {
+    color: var(--background);
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    padding-right: 1em;
+}
+
+
+.hero-section {
+    padding: 1em 2em;
+}
+
+.hero-section p {
+    padding: 0.2em;
+}
