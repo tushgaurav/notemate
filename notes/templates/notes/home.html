@@ -24,14 +24,18 @@ NoteMate - Home
         </div>
     </div>
 
+    {% for note in notes %}
     <div class="notes">
-        {% for note in notes %}
-        <div class="note">
-            <h4>{{ note.title }}</h4>
-            <h5>{{ note.user }}</h5>
-            <p>{{ note.content }}</p>
+        <h1>{{ note.title }}</h1>
+        <div class="note_info">
+            <p>{{ note.user }}</p>
+            <p>{{ note.date_updated | timesince }}</p>
         </div>
-        {% endfor %}
+        <p class="content">
+            {{ note.content }}
+        </p>
     </div>
+    {% endfor %}
+
 
 {% endblock %}

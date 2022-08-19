@@ -62,3 +62,39 @@ nav ul {
 .hero-section p {
     padding: 0.2em;
 }
+
+/* Note component styling */
+
+* {
+    margin: 0;
+  }
+  
+  .note {
+    padding: 1em 0;
+  }
+  
+  .note h1 {
+    font-size: 1.4em;
+  }
+  
+  .note_info {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    padding: 0.25em;
+    font-size: 0.90em;
+  }
+  
+  .content {
+    padding: 0.8em 0;
+    max-width: 72ch;
+  }
+  
+  
+
+
+
+
+
+
+

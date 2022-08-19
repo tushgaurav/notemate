@@ -18,10 +18,14 @@ Add Note - NoteMate
         <div class="notes">
             {% for note in notes %}
             <div class="note">
-                <h4>{{ note.title }}</h4>
-                <h5><a href="{% url 'delete' note.id %}">delete</a></h5>
-                <h5><a href="{% url 'edit' note.id %}">edit</a></h5>
-                <p>{{ note.content }}</p>
+                <h1>{{ note.title }}</h1>
+                <div class="note_info">
+                    <p>{{ note.user }}</p>
+                    <p>{{ note.date_updated | timesince }}</p>
+                <p><a href="{% url 'delete' note.id %}">delete</a></p>
+                <p><a href="{% url 'edit' note.id %}">edit</a></p>
+                </div>
+                <p class="content">{{ note.content }}</p>
             </div>
             {% endfor %}
         </div>
