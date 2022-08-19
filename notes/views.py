@@ -6,7 +6,7 @@ from .forms import NoteForm
 
 def home(request):
     time = datetime.datetime.now()
-    notes = Note.objects.all()
+    notes = Note.objects.all()[:2]
     context = {
         'notes': notes,
         'time': time
