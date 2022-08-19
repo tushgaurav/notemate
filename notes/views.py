@@ -6,7 +6,7 @@ from .forms import NoteForm
 
 def home(request):
     time = datetime.datetime.now()
-    notes = Note.objects.all()[:2]
+    notes = Note.objects.filter(user = request.user)[:2]
     context = {
         'notes': notes,
         'time': time
@@ -14,9 +14,13 @@ def home(request):
     return render(request, 'notes/home.html', context)
 
 def profileView(request, username):
-    user = User.objects.get(username=username)
+    user_obj = User.objects.get(username=username)
+    notes = Note.objects.filter(user=user_obj)
+    total_notes = notes.count()
     context = {
-        'user': user
+        'user': user_obj,
+        'number': total_notes,
+        'notes': notes,
     }
     return render(request, 'notes/user.html', context)
 
