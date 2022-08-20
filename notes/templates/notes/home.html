@@ -12,18 +12,24 @@ NoteMate - Home
         </div>
     </div>
 
-    {% for note in notes %}
-    <div class="notes">
-        <h1>{{ note.title }}</h1>
-        <div class="note_info">
-            <p>{{ note.user }}</p>
-            <p>{{ note.date_updated | timesince }}</p>
+    {% if request.user.is_authenticated %}
+        {% for note in notes %}
+        <div class="notes">
+            <h1>{{ note.title }}</h1>
+            <div class="note_info">
+                <p>{{ note.user }}</p>
+                <p>{{ note.date_updated | timesince }}</p>
+            </div>
+            <p class="content">
+                {{ note.content }}
+            </p>
         </div>
-        <p class="content">
-            {{ note.content }}
-        </p>
-    </div>
-    {% endfor %}
-
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <p>Please login to view your notes and edit them.</p>
+            <p>{{ time }}</p>
+        </div>
+    {% endif %}
 
 {% endblock %}

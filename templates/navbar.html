@@ -2,7 +2,11 @@
     <h1 class="logo">NoteMate</h1>
     <ul>
         <li><a href="{% url 'home' %}">home</a></li>
-        <li><a href="{% url 'profile' user.username %}">profile</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">login</a></li>
+        {% endif %}
         <li><a href="{% url 'add_note' %}">notes</a></li>
     </ul>
 </nav>
